@@ -1,7 +1,7 @@
 import tkinter
 from tkinter import filedialog
 import databaseSearch as search
-import mysql.connector
+import sealSearch as seal
 import tkinter as tk
 from tkinter.ttk import Combobox
 from tkinter import *
@@ -20,6 +20,7 @@ def chapterDetails(root):
     clear_frame()
     root.geometry('1000x500')
     root.title('Details on ' + selectedChapter+ ' Chapter')
+    seal.seal(selectedChapter, root)
 
     global foundationalFlag
 
