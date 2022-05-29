@@ -1,6 +1,6 @@
 import tkinter
 from tkinter import filedialog
-
+import databaseSearch as search
 import mysql.connector
 import tkinter as tk
 from tkinter.ttk import Combobox
@@ -12,680 +12,10 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 global newDatabase
-
-def chapterSize():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute(
-        "SELECT Chapter_Size_Greater_Or_Equal_To_PKS_Or_Campus_Average FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def newMember25OrHigher():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute(
-        "SELECT New_Members_Greater_Or_Equal_To_25 FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def composite():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute(
-        "SELECT Submits_Composite_Copy_Or_Equivalent FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def noWellnessCheck():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute(
-        "SELECT Not_Responsible_For_Wellness_Check FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def invoicesPaidNet30():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute(
-        "SELECT Invoices_Paid_Net_30 FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def IFCAttendance():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT Attends_All_Or_Greek_Council_Meeting_GA_Ver_Form FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def raiseMoneyPhi():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT Philantrophy_Money_Donated FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def communityService():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT Service_Hours_16_Per_Man FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def formalTraining():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT Formal_Training FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-
-def alumniNewsletter():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT Alumni_Newsletter FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-
-def chapterWebsite():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute(
-        "SELECT Active_Website_Or_Social_Media FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def philanthropicEvent():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute(
-        "SELECT Philantrophy_Events FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def brotherhoodEvents():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute(
-        "SELECT Two_Brotherhood_Building_Actives_Per_Month FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def socialEvent():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute(
-        "SELECT Social_Events FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def springGradesReport():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute(
-        "SELECT Chapter_GPA FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def monthlyMeetingMinutes():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute(
-        "SELECT Monthly_Chapter_Meetings FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def monthlyFinancials():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute(
-        "SELECT Monthly_Financial_Statements FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def tightRope4():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute(
-        "SELECT tightrope_100 FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def pillarsNME4():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute(
-        "SELECT Uses_Pillars FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def noShowCause4():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute(
-        "SELECT No_Show_Cause FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def membershipAgreement4():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute(
-        "SELECT Membership_Agreements_100 FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def GCAttandence():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute(
-        "SELECT Grand_Chapter_Attendence FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def rosterMange4():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute(
-        "SELECT Roster FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def greekAdvisor():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT Greek_Advisor_Verification_Form FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def finGreekBill():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT GreekBill FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def rosterMange3():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT Roster FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def malteCross():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT One_Chapter_Member_Writes_Article_To_Maltes_Cross FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def budget3():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT Chapter_Budget FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def officerCompl3():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT Officer_Training_Or_Transition FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def MOHAttends():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT Men_of_Honor_Attendence FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def tightRope():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT tightrope_100 FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-def membershipAgreement1():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT Membership_Agreements_100 FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def rosterMange2():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT Roster FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def springRecruit():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT Recruitment_Plan FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def IRS990():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT IRS_990 FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def officerCompl():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT Officer_Training_Or_Transition FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-
-def rosterManagement():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT Roster FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-
-
-def fallUpdate():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT Fall_Updates FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def recruit():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT Recruitment_Plan FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def budget():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT Chapter_Budget FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-def chaptAcademicProgram():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT Academic_Program FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-
-def chapBylaws():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
-        auth_plugin='mysql_native_password',
-        database="pks_chapter_data",
-    )
-
-    mycursor = mydb.cursor(buffered=True, dictionary=True)
-    mycursor.execute("SELECT Chapter_Bylaws FROM 2020to2021 where Chapter = '" + selectedChapter + "';")
-    myresults = mycursor.fetchall()
-
-    return myresults[0]
-
-
-def selectionChapters():
-    mydb = mysql.connector.connect(
-      host="localhost",
-      user="root",
-      passwd='PKSFall2021!*',  #"mypassword",
-      auth_plugin='mysql_native_password',
-      database="pks_chapter_data",
-    )
-
-
-    mycursor = mydb.cursor()
-    mycursor.execute("SELECT Chapter FROM 2020to2021")
-    myresults = mycursor.fetchall()
-
-    return myresults
+global selectedChapter
 
 
 def chapterDetails(root):
-    global selectedChapter
     selectedChapter = cb.get()
     clear_frame()
     root.geometry('1000x500')
@@ -708,7 +38,7 @@ def chapterDetails(root):
     back = Button(root, text="back", fg='blue', command=lambda: home(root))
     back.place(x=20, y=450)
 
-    awards = Button(root, text="Chapter Excellence", fg='blue', command=lambda: mscAwards(root, foundationalFlag))
+    awards = Button(root, text="Chapter Excellence", fg='blue', command=lambda: mscAwards(root, foundationalFlag, selectedChapter))
     awards.place(x=100, y=450)
 
     trends = Button(root, text="trends", fg='blue')
@@ -722,7 +52,7 @@ def chapterDetails(root):
     q1Count = 0
     q1Total = 6
 
-    resultBylaws = chapBylaws()
+    resultBylaws = search.chapBylaws(selectedChapter)
     if resultBylaws['Chapter_Bylaws'] == 1:
         q1Count+= 1
         chaptBylaw = Label(root, background= 'green', text='Chapter By-laws')
@@ -738,7 +68,7 @@ def chapterDetails(root):
         chaptBylaw = Label(root, text='Chapter By-laws')
         chaptBylaw.place(x=20, y=50)
 
-    resultAcademic = chaptAcademicProgram()
+    resultAcademic = search.chaptAcademicProgram(selectedChapter)
     if resultAcademic['Academic_Program'] ==1:
         q1Count+=1
         academicProgram = Label(root, background='green',text='Academic Program')
@@ -754,7 +84,7 @@ def chapterDetails(root):
         academicProgram = Label(root, text='Academic Program')
         academicProgram.place(x=20, y=70)
 
-    resultBudget = budget()
+    resultBudget = search.budget(selectedChapter)
     if resultBudget['Chapter_Budget'] == 1:
         q1Count+=1
         chaptBudget = Label(root, background= 'green', text='Chapter Budget')
@@ -770,7 +100,7 @@ def chapterDetails(root):
         chaptBudget = Label(root,text='Chapter Budget')
         chaptBudget.place(x=20, y=90)
 
-    resultRecruitPlan = recruit()
+    resultRecruitPlan = search.recruit(selectedChapter)
     if resultRecruitPlan['Recruitment_Plan'] == 1:
         q1Count+=1
         recruitPlan = Label(root, background='green', text='Recruitment Plan')
@@ -786,7 +116,7 @@ def chapterDetails(root):
         recruitPlan = Label(root, text='Recruitment Plan')
         recruitPlan.place(x=20, y=110)
 
-    resultFallChapUpdate = fallUpdate()
+    resultFallChapUpdate = search.fallUpdate(selectedChapter)
     if resultFallChapUpdate['Fall_Updates'] == 1:
         fallChapUpdate = Label(root, background='green',text='Fall Chapter Updates')
         fallChapUpdate.place(x=20, y=130)
@@ -800,7 +130,7 @@ def chapterDetails(root):
         fallChapUpdate = Label(root, text='Fall Chapter Updates')
         fallChapUpdate.place(x=20, y=130)
 
-    resultRosterMange = rosterManagement()
+    resultRosterMange = search.rosterManagement(selectedChapter)
     if resultRosterMange['Roster'] == 1:
         q1Count+=1
         rosterMange = Label(root, background='green', text='Roster Management')
@@ -826,7 +156,7 @@ def chapterDetails(root):
     q2Count = 0
     q2Total = 7
 
-    resultOfficerCompl = officerCompl()
+    resultOfficerCompl = search.officerCompl(selectedChapter)
     if resultOfficerCompl['Officer_Training_Or_Transition'] == 1:
         q2Count+=1
         officerComplLB = Label(root,background='green',text='Officer Compliance')
@@ -841,7 +171,7 @@ def chapterDetails(root):
         officerComplLB = Label(root, text='Officer Compliance')
         officerComplLB.place(x=20, y=220)
 
-    resultIRS = IRS990()
+    resultIRS = search.IRS990(selectedChapter)
     if resultIRS['IRS_990'] == 1:
         q2Count+=1
         IRS990form = Label(root, background='green',text='IRS 990')
@@ -857,7 +187,7 @@ def chapterDetails(root):
         IRS990form = Label(root, text='IRS 990')
         IRS990form.place(x=20, y=240)
 
-    resultSpringRecruit = springRecruit()
+    resultSpringRecruit = search.springRecruit(selectedChapter)
     if resultSpringRecruit['Recruitment_Plan'] == 1:
         q2Count+=1
         springRecruitPlan = Label(root, background='green',text='Spring Recruitment Plan')
@@ -873,7 +203,7 @@ def chapterDetails(root):
         springRecruitPlan = Label(root, text='Spring Recruitment Plan')
         springRecruitPlan.place(x=20, y=260)
 
-    resultRosterMange2 = rosterMange2()
+    resultRosterMange2 = search.rosterMange2(selectedChapter)
     if resultRosterMange2['Roster'] == 1:
         q2Count+=1
         rosterMangeQ2 = Label(root, background='green', text='Roster Management')
@@ -889,7 +219,7 @@ def chapterDetails(root):
         rosterMangeQ2 = Label(root, text='Roster Management')
         rosterMangeQ2.place(x=20, y=280)
 
-    resultMembership = membershipAgreement1()
+    resultMembership = search.membershipAgreement1(selectedChapter)
     if resultMembership['Membership_Agreements_100'] == 1:
         q2Count+=1
         membershipAgreement = Label(root, background='green',text='Membership Agreement')
@@ -905,7 +235,7 @@ def chapterDetails(root):
         membershipAgreement = Label(root, text='Membership Agreement')
         membershipAgreement.place(x=20, y=300)
 
-    resultTightrope = tightRope()
+    resultTightrope = search.tightRope(selectedChapter)
     if resultTightrope['tightrope_100'] == 1:
         q2Count+=1
         tightropeCompletion = Label(root, background='green',text='Tightrope Completion(100%)')
@@ -921,7 +251,7 @@ def chapterDetails(root):
         tightropeCompletion = Label(root, text='Tightrope Completion(100%)')
         tightropeCompletion.place(x=20, y=320)
 
-    resultMOH = MOHAttends()
+    resultMOH = search.MOHAttends(selectedChapter)
     if resultMOH['Men_of_Honor_Attendence'] == 1:
         q2Count+=1
         MOHAttend = Label(root, background='green',text='Men of Honor Attendance')
@@ -947,7 +277,7 @@ def chapterDetails(root):
     q3Count = 0
     q3Total = 4
 
-    resultOfficerCompl3 = officerCompl3()
+    resultOfficerCompl3 = search.officerCompl3(selectedChapter)
     if resultOfficerCompl3['Officer_Training_Or_Transition'] == 1:
         q3Count+=1
         officerComplLBQ3 = Label(root, background='green',text='Officer Compliance')
@@ -962,7 +292,7 @@ def chapterDetails(root):
         officerComplLBQ3 = Label(root, text='Officer Compliance')
         officerComplLBQ3.place(x=250, y=50)
 
-    resultBudget3 = budget3()
+    resultBudget3 = search.budget3(selectedChapter)
     if resultBudget3['Chapter_Budget'] == 1:
         q3Count+=1
         chaptBudgetQ3 = Label(root,background='green',text='Chapter Budget')
@@ -978,7 +308,7 @@ def chapterDetails(root):
         chaptBudgetQ3 = Label(root, text='Chapter Budget')
         chaptBudgetQ3.place(x=250, y=70)
 
-    resultMalteCross = malteCross()
+    resultMalteCross = search.malteCross(selectedChapter)
     if resultMalteCross['One_Chapter_Member_Writes_Article_To_Maltes_Cross'] == 1:
         q3Count+=1
         malteseCrossReport = Label(root,background='green',text='Maltese Cross Report')
@@ -993,7 +323,7 @@ def chapterDetails(root):
         malteseCrossReport = Label(root, text='Maltese Cross Report')
         malteseCrossReport.place(x=250, y=90)
 
-    resultRosterMange3 = rosterMange3()
+    resultRosterMange3 = search.rosterMange3(selectedChapter)
     if resultRosterMange3['Roster'] == 1:
         q3Count+=1
         rosterMangeQ3 = Label(root,background='green',text='Roster Management')
@@ -1019,7 +349,7 @@ def chapterDetails(root):
     q4Count = 0
     q4Total = 8
 
-    resultGreekBill = finGreekBill()
+    resultGreekBill = search.finGreekBill(selectedChapter)
     if resultGreekBill['GreekBill'] == 1:
         q4Count+=1
         fincialManageVerif = Label(root,background='green',text='Financial Management Verification')
@@ -1035,7 +365,7 @@ def chapterDetails(root):
         fincialManageVerif = Label(root, text='Financial Management Verification')
         fincialManageVerif.place(x=250, y=220)
 
-    resultGreekAdvisor = greekAdvisor()
+    resultGreekAdvisor = search.greekAdvisor(selectedChapter)
     if resultGreekAdvisor['Greek_Advisor_Verification_Form'] == 1:
         q4Count+=1
         greekAdvicorVerif = Label(root, background='green',text='Greek Advisor Verification')
@@ -1051,7 +381,7 @@ def chapterDetails(root):
         greekAdvicorVerif = Label(root, text='Greek Advisor Verification')
         greekAdvicorVerif.place(x=250, y=240)
 
-    resultRosterMange4 = rosterMange4()
+    resultRosterMange4 = search.rosterMange4(selectedChapter)
     if resultRosterMange4['Roster'] == 1:
         q4Count+=1
         rosterMangeQ4 = Label(root, background='green',text='Roster Management')
@@ -1067,7 +397,7 @@ def chapterDetails(root):
         rosterMangeQ4 = Label(root, text='Roster Management')
         rosterMangeQ4.place(x=250, y=260)
 
-    resultGCAttand = GCAttandence()
+    resultGCAttand = search.GCAttandence(selectedChapter)
     if resultGCAttand['Grand_Chapter_Attendence'] == 1:
         q4Count+=1
         GCAttand = Label(root, background='green',text='Grand Chapter Attendance/OSI')
@@ -1083,7 +413,7 @@ def chapterDetails(root):
         GCAttand = Label(root, text='Grand Chapter Attendance/OSI')
         GCAttand.place(x=250, y=280)
 
-    resultMembershipQ4 = membershipAgreement4()
+    resultMembershipQ4 = search.membershipAgreement4(selectedChapter)
     if resultMembershipQ4['Membership_Agreements_100'] == 1:
         q4Count+=1
         membershipAgreementQ4 = Label(root, background='green',text='Membership Agreement')
@@ -1099,7 +429,7 @@ def chapterDetails(root):
         membershipAgreementQ4 = Label(root, text='Membership Agreement')
         membershipAgreementQ4.place(x=250, y=300)
 
-    resultNoShow = noShowCause4()
+    resultNoShow = search.noShowCause4(selectedChapter)
     if resultNoShow['No_Show_Cause'] == 1:
         q4Count+=1
         noShowCause = Label(root, background='green',text='No Show Cause')
@@ -1115,7 +445,7 @@ def chapterDetails(root):
         noShowCause = Label(root, text='No Show Cause')
         noShowCause.place(x=250, y=320)
 
-    resultPillars = pillarsNME4()
+    resultPillars = search.pillarsNME4(selectedChapter)
     if resultPillars['Uses_Pillars'] == 1:
         q4Count+=1
         pillarsNME = Label(root, background='green',text='Pillars New Member Education')
@@ -1132,7 +462,7 @@ def chapterDetails(root):
         pillarsNME.place(x=250, y=340)
 
 
-    resultTightrope4 = tightRope4()
+    resultTightrope4 = search.tightRope4(selectedChapter)
     if resultTightrope4['tightrope_100'] == 1:
         q4Count+=1
         tightropeCompletionQ4 = Label(root, background='green',text='Tightrope Completion(100%)')
@@ -1173,7 +503,7 @@ def chapterDetails(root):
         foundationalFlag = True
     else:
         foundationalFlag = False
-def mscAwards(root, passFoundation):
+def mscAwards(root, passFoundation, selectedChapter):
     clear_frame()
     root.geometry('1100x600')
     root.title('Qualifying Chapter Excellence for ' + selectedChapter + ' Chapter')
@@ -1205,7 +535,7 @@ def mscAwards(root, passFoundation):
         q1Count = 0
         q1Total = 3
 
-        resultMonthlyFinancialsQ1 = monthlyFinancials()
+        resultMonthlyFinancialsQ1 = search.monthlyFinancials(selectedChapter)
         if resultMonthlyFinancialsQ1['Monthly_Financial_Statements'] == 1:
             q1Count += 1
             monthlyFinancialsCompQ1 = Label(root, background='green', text='Monthly Financials (May-August)')
@@ -1221,7 +551,7 @@ def mscAwards(root, passFoundation):
             monthlyFinancialsCompQ1 = Label(root,  text='Monthly Financials (May-August)')
             monthlyFinancialsCompQ1.place(x=20, y=90)
 
-        resultMonthlyMinutesQ1 = monthlyMeetingMinutes()
+        resultMonthlyMinutesQ1 = search.monthlyMeetingMinutes(selectedChapter)
         if resultMonthlyMinutesQ1['Monthly_Chapter_Meetings'] == 1:
             q1Count += 1
             monthlyMinutesQ1 = Label(root, background='green', text='Monthly Meeting Minutes (August)')
@@ -1234,7 +564,7 @@ def mscAwards(root, passFoundation):
             monthlyMinutesQ1 = Label(root, background='green', text='Monthly Meeting Minutes (August)')
             monthlyMinutesQ1.place(x=20, y=110)
 
-        resultSpringGrades = springGradesReport()
+        resultSpringGrades = search.springGradesReport(selectedChapter)
         if resultSpringGrades['Chapter_GPA'] == 1:
             q1Count += 1
             springGradeReport = Label(root, background='green', text='Spring Grade Report')
@@ -1260,7 +590,7 @@ def mscAwards(root, passFoundation):
         q2Count = 0
         q2Total = 6
 
-        resultsSocialEvent = socialEvent()
+        resultsSocialEvent = search.socialEvent(selectedChapter)
         if resultsSocialEvent['Social_Events'] == 1:
             q2Count+=1
             socialEvent1 = Label(root, background='green', text='Social Event')
@@ -1276,7 +606,7 @@ def mscAwards(root, passFoundation):
             socialEvent1 = Label(root, text='Social Event')
             socialEvent1.place(x=20, y=220)
 
-        resultsBrotherhoodEvents = brotherhoodEvents()
+        resultsBrotherhoodEvents = search.brotherhoodEvents(selectedChapter)
         if resultsBrotherhoodEvents['Two_Brotherhood_Building_Actives_Per_Month'] == 1:
             q2Count += 1
             brotherhoodEvents1 = Label(root, background='green', text='Brotherhood Events')
@@ -1292,7 +622,7 @@ def mscAwards(root, passFoundation):
             brotherhoodEvents1 = Label(root, text='Brotherhood Events')
             brotherhoodEvents1.place(x=20, y=240)
 
-        resultsMonthlyFinancials2 = monthlyFinancials()
+        resultsMonthlyFinancials2 = search.monthlyFinancials(selectedChapter)
         if resultsMonthlyFinancials2['Monthly_Financial_Statements'] == 1:
             q2Count += 1
             monthlyFinancials2 = Label(root, background='green', text='Monthly Financials (September-October)')
@@ -1308,7 +638,7 @@ def mscAwards(root, passFoundation):
             monthlyFinancials2 = Label(root, text='Monthly Financials (September-October)')
             monthlyFinancials2.place(x=20, y=260)
 
-        resultsMonthlyMinutse2 = monthlyMeetingMinutes()
+        resultsMonthlyMinutse2 = search.monthlyMeetingMinutes(selectedChapter)
         if resultsMonthlyMinutse2['Monthly_Chapter_Meetings'] == 1:
             q2Count += 1
             monthlyMeetingMinutes2 = Label(root, background='green', text='Monthly Meeting Minutes (September-October)')
@@ -1324,7 +654,7 @@ def mscAwards(root, passFoundation):
             monthlyMeetingMinutes2 = Label(root, text='Monthly Meeting Minutes (September-October)')
             monthlyMeetingMinutes2.place(x=20, y=280)
 
-        resultPhilanthropicEvent = philanthropicEvent()
+        resultPhilanthropicEvent = search.philanthropicEvent(selectedChapter)
         if resultPhilanthropicEvent['Philantrophy_Events'] == 1:
             q2Count += 1
             philanthropicEvent1 = Label(root, background='green', text='Philanthropic Event')
@@ -1340,7 +670,7 @@ def mscAwards(root, passFoundation):
             philanthropicEvent1 = Label(root, text='Philanthropic Event')
             philanthropicEvent1.place(x=20, y=300)
 
-        resultChapterWebsite = chapterWebsite()
+        resultChapterWebsite = search.chapterWebsite(selectedChapter)
         if resultChapterWebsite['Active_Website_Or_Social_Media'] == 1:
             q2Count += 1
             chapterWebsite1 = Label(root, background='green', text='Chapter Website')
@@ -1366,7 +696,7 @@ def mscAwards(root, passFoundation):
         q3Count = 0
         q3Total = 4
 
-        resultMonthlyFinancialsQ3 = monthlyFinancials()
+        resultMonthlyFinancialsQ3 = search.monthlyFinancials(selectedChapter)
         if resultMonthlyFinancialsQ3 ['Monthly_Financial_Statements'] == 1:
             q3Count += 1
             monthlyFinancialsCompQ3 = Label(root, background='green', text='Monthly Financials (December-January)')
@@ -1382,7 +712,7 @@ def mscAwards(root, passFoundation):
             monthlyFinancialsCompQ3 = Label(root, text='Monthly Financials (December-January)')
             monthlyFinancialsCompQ3.place(x=320, y=90)
 
-        resultMonthlyMinutesQ3 = monthlyMeetingMinutes()
+        resultMonthlyMinutesQ3 = search.monthlyMeetingMinutes(selectedChapter)
         if resultMonthlyMinutesQ3['Monthly_Chapter_Meetings'] == 1:
             q3Count += 1
             monthlyMeetingMinutes3 = Label(root, background='green', text='Monthly Meeting Minutes (September-October)')
@@ -1398,7 +728,7 @@ def mscAwards(root, passFoundation):
             monthlyMeetingMinutes3 = Label(root, text='Monthly Meeting Minutes (September-October)')
             monthlyMeetingMinutes3.place(x=320, y=110)
 
-        resultGradeReport = springGradesReport()
+        resultGradeReport = search.springGradesReport(selectedChapter)
         if resultGradeReport['Chapter_GPA'] == 1:
             q3Count += 1
             gradeReport = Label(root, background='green', text='Grade Report')
@@ -1414,7 +744,7 @@ def mscAwards(root, passFoundation):
             gradeReport = Label(root, text='Spring Grade Report')
             gradeReport.place(x=320, y=130)
 
-        resultGoalsPlanning = officerCompl3()
+        resultGoalsPlanning = search.officerCompl3(selectedChapter)
         if resultGoalsPlanning['Officer_Training_Or_Transition'] == 1:
             q3Count += 1
             goalPlanning = Label(root, background='green', text='Goals and Planning')
@@ -1440,7 +770,7 @@ def mscAwards(root, passFoundation):
         q4Count = 0
         q4Total = 16
 
-        resultAlumniNewsletter = alumniNewsletter()
+        resultAlumniNewsletter = search.alumniNewsletter(selectedChapter)
         if resultAlumniNewsletter['Alumni_Newsletter'] == 1:
             q4Count += 1
             alumniNewsletter4 = Label(root, background='green', text='Alumni Newsletter')
@@ -1456,7 +786,7 @@ def mscAwards(root, passFoundation):
             alumniNewsletter4 = Label(root, text='Alumni Newsletter')
             alumniNewsletter4.place(x=320, y=220)
 
-        resultsSocialEvent4 = socialEvent()
+        resultsSocialEvent4 = search.socialEvent(selectedChapter)
         if resultsSocialEvent4['Social_Events'] == 1:
             q4Count += 1
             socialEvent4 = Label(root, background='green', text='Social Event')
@@ -1472,7 +802,7 @@ def mscAwards(root, passFoundation):
             socialEvent4 = Label(root, text='Social Event')
             socialEvent4.place(x=320, y=240)
 
-        resultMonthlyFinancialsQ4 = monthlyFinancials()
+        resultMonthlyFinancialsQ4 = search.monthlyFinancials(selectedChapter)
         if resultMonthlyFinancialsQ4['Monthly_Financial_Statements'] == 1:
             q4Count += 1
             monthlyFinancialsCompQ4 = Label(root, background='green', text='Monthly Financials (February-April)')
@@ -1488,7 +818,7 @@ def mscAwards(root, passFoundation):
             monthlyFinancialsCompQ4 = Label(root, text='Monthly Financials (February-April)')
             monthlyFinancialsCompQ4.place(x=320, y=260)
 
-        resultMonthlyMinutesQ4 = monthlyMeetingMinutes()
+        resultMonthlyMinutesQ4 = search.monthlyMeetingMinutes(selectedChapter)
         if resultMonthlyMinutesQ4['Monthly_Chapter_Meetings'] == 1:
             q4Count += 1
             monthlyMeetingMinutes4 = Label(root, background='green', text='Monthly Meeting Minutes (February-April)')
@@ -1504,7 +834,7 @@ def mscAwards(root, passFoundation):
             monthlyMeetingMinutes4 = Label(root, text='Monthly Meeting Minutes (February-April)')
             monthlyMeetingMinutes4.place(x=320, y=280)
 
-        resultsBrotherhoodEvents4 = brotherhoodEvents()
+        resultsBrotherhoodEvents4 = search.brotherhoodEvents(selectedChapter)
         if resultsBrotherhoodEvents4['Two_Brotherhood_Building_Actives_Per_Month'] == 1:
             q4Count += 1
             brotherhoodEvents4 = Label(root, background='green', text='Brotherhood Events')
@@ -1520,7 +850,7 @@ def mscAwards(root, passFoundation):
             brotherhoodEvents4 = Label(root, text='Brotherhood Events')
             brotherhoodEvents4.place(x=320, y=300)
 
-        resultFormalTraining = formalTraining()
+        resultFormalTraining = search.formalTraining(selectedChapter)
         if resultFormalTraining['Formal_Training'] == 1:
             q4Count += 1
             formalTraining4 = Label(root, background='green', text='Formal Training')
@@ -1536,7 +866,7 @@ def mscAwards(root, passFoundation):
             formalTraining4 = Label(root, text='Formal Training')
             formalTraining4.place(x=320, y=320)
 
-        resultCommunityService = communityService()
+        resultCommunityService = search.communityService(selectedChapter)
         if resultCommunityService['Service_Hours_16_Per_Man'] == 1:
             q4Count += 1
             communityService4 = Label(root, background='green', text='Community Service')
@@ -1552,7 +882,7 @@ def mscAwards(root, passFoundation):
             communityService4 = Label(root, text='Community Service')
             communityService4.place(x=320, y=340)
 
-        resultPhilanthropicEvent4 = philanthropicEvent()
+        resultPhilanthropicEvent4 = search.philanthropicEvent(selectedChapter)
         if resultPhilanthropicEvent4['Philantrophy_Events'] == 1:
             q4Count += 1
             philanthropicEvent4 = Label(root, background='green', text='Philanthropy Events')
@@ -1568,7 +898,7 @@ def mscAwards(root, passFoundation):
             philanthropicEvent4 = Label(root, text='Philanthropy Events')
             philanthropicEvent4.place(x=320, y=360)
 
-        resultRaiseMoneyPhi = raiseMoneyPhi()
+        resultRaiseMoneyPhi = search.raiseMoneyPhi(selectedChapter)
         if resultRaiseMoneyPhi['Philantrophy_Money_Donated'] == 1:
             q4Count += 1
             raiseMoneyPhi4 = Label(root, background='green', text='Philanthropy Money Donated')
@@ -1584,7 +914,7 @@ def mscAwards(root, passFoundation):
             raiseMoneyPhi4 = Label(root, text='Philanthropy Events')
             raiseMoneyPhi4.place(x=320, y=380)
 
-        resultIFCAttendance = IFCAttendance()
+        resultIFCAttendance = search.IFCAttendance(selectedChapter)
         if resultIFCAttendance['Attends_All_Or_Greek_Council_Meeting_GA_Ver_Form'] == 1:
             q4Count += 1
             IFCAttendance4 = Label(root, background='green', text='Attends All Council Meeting GA Ver Form')
@@ -1600,7 +930,7 @@ def mscAwards(root, passFoundation):
             IFCAttendance4 = Label(root, text='Attends All Council Meeting GA Ver Form')
             IFCAttendance4.place(x=320, y=400)
 
-        resultChapterWebsite4 = chapterWebsite()
+        resultChapterWebsite4 = search.chapterWebsite(selectedChapter)
         if resultChapterWebsite4['Active_Website_Or_Social_Media'] == 1:
             q4Count += 1
             chapterWebsite4 = Label(root, background='green', text='Chapter Website')
@@ -1616,7 +946,7 @@ def mscAwards(root, passFoundation):
             chapterWebsite4 = Label(root, text='Chapter Website')
             chapterWebsite4.place(x=320, y=420)
 
-        resultInvoicesPaidNet30 = invoicesPaidNet30 ()
+        resultInvoicesPaidNet30 = search.invoicesPaidNet30 (selectedChapter)
         if resultInvoicesPaidNet30['Invoices_Paid_Net_30'] == 1:
             q4Count += 1
             invoicesPaidNet304 = Label(root, background='green', text='Invoices Paid Net 30')
@@ -1632,7 +962,7 @@ def mscAwards(root, passFoundation):
             invoicesPaidNet304 = Label(root, text='Invoices Paid Net 30')
             invoicesPaidNet304.place(x=320, y=440)
 
-        resultNoWellnessCheck = noWellnessCheck()
+        resultNoWellnessCheck = search.noWellnessCheck(selectedChapter)
         if resultNoWellnessCheck['Not_Responsible_For_Wellness_Check'] == 1:
             q4Count += 1
             noWellnessCheck4 = Label(root, background='green', text='Not Responsible For Wellness Check')
@@ -1648,7 +978,7 @@ def mscAwards(root, passFoundation):
             noWellnessCheck4 = Label(root, text='Not Responsible For Wellness Check')
             noWellnessCheck4.place(x=320, y=460)
 
-        resultComposite = composite()
+        resultComposite = search.composite(selectedChapter)
         if resultComposite['Submits_Composite_Copy_Or_Equivalent'] == 1:
             q4Count += 1
             composite4 = Label(root, background='green', text='Composite')
@@ -1664,7 +994,7 @@ def mscAwards(root, passFoundation):
             composite4 = Label(root, text='Composite')
             composite4.place(x=320, y=480)
 
-        resultNewMember25OrHigher = newMember25OrHigher()
+        resultNewMember25OrHigher = search.newMember25OrHigher(selectedChapter)
         if resultNewMember25OrHigher['New_Members_Greater_Or_Equal_To_25'] == 1:
             q4Count += 1
             newMember25OrHigher4 = Label(root, background='green', text='New Member 25 Or Higher')
@@ -1680,7 +1010,7 @@ def mscAwards(root, passFoundation):
             newMember25OrHigher4 = Label(root, text='New Member 25 Or Higher')
             newMember25OrHigher4.place(x=320, y=500)
 
-        resultChapterSize = chapterSize()
+        resultChapterSize = search.chapterSize(selectedChapter)
         if resultChapterSize['Chapter_Size_Greater_Or_Equal_To_PKS_Or_Campus_Average'] == 1:
             q4Count += 1
             chapterSize4 = Label(root, background='green', text='Chapter Size')
@@ -1729,7 +1059,7 @@ def homeChapter(root):
     img.image = importImg
     img.place(x=175, y=0)
 
-    chapters=selectionChapters()
+    chapters=search.selectionChapters()
     global cb
     cb = Combobox(root, values=chapters, width=30, state='readonly')
     cb.place(x=150, y=200)
