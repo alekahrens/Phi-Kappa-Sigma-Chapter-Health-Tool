@@ -4,7 +4,7 @@ def chapterSize(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -20,7 +20,7 @@ def newMember25OrHigher(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -36,7 +36,7 @@ def composite(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -52,7 +52,7 @@ def noWellnessCheck(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -68,7 +68,7 @@ def invoicesPaidNet30(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -84,7 +84,7 @@ def IFCAttendance(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -99,7 +99,7 @@ def raiseMoneyPhi(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -114,7 +114,7 @@ def communityService(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -129,7 +129,7 @@ def formalTraining(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -145,7 +145,7 @@ def alumniNewsletter(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -161,7 +161,7 @@ def chapterWebsite(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -177,7 +177,7 @@ def philanthropicEvent(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -193,7 +193,7 @@ def brotherhoodEvents(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -209,7 +209,7 @@ def socialEvent(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -225,7 +225,7 @@ def springGradesReport(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -241,7 +241,7 @@ def monthlyMeetingMinutes(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -257,7 +257,7 @@ def monthlyFinancials(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -273,7 +273,7 @@ def tightRope4(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -289,7 +289,7 @@ def pillarsNME4(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -305,7 +305,7 @@ def noShowCause4(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -321,7 +321,7 @@ def membershipAgreement4(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -337,7 +337,7 @@ def GCAttandence(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -353,7 +353,7 @@ def rosterMange4(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -369,7 +369,7 @@ def greekAdvisor(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -384,7 +384,7 @@ def finGreekBill(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -399,7 +399,7 @@ def rosterMange3(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -414,7 +414,7 @@ def malteCross(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -429,7 +429,7 @@ def budget3(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -444,7 +444,7 @@ def officerCompl3(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -459,7 +459,7 @@ def MOHAttends(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -474,7 +474,7 @@ def tightRope(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -488,7 +488,7 @@ def membershipAgreement1(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -503,7 +503,7 @@ def rosterMange2(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -518,7 +518,7 @@ def springRecruit(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -533,7 +533,7 @@ def IRS990(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -548,7 +548,7 @@ def officerCompl(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -564,7 +564,7 @@ def rosterManagement(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -581,7 +581,7 @@ def fallUpdate(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -596,7 +596,7 @@ def recruit(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -611,7 +611,7 @@ def budget(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -626,7 +626,7 @@ def chaptAcademicProgram(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -642,7 +642,7 @@ def chapBylaws(selectedChapter):
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd='PKSFall2021!*',  # "mypassword",
+        passwd='*',  # "mypassword",
         auth_plugin='mysql_native_password',
         database="pks_chapter_data",
     )
@@ -658,7 +658,7 @@ def selectionChapters():
     mydb = mysql.connector.connect(
       host="localhost",
       user="root",
-      passwd='PKSFall2021!*',  #"mypassword",
+      passwd='*',  #"mypassword",
       auth_plugin='mysql_native_password',
       database="pks_chapter_data",
     )
